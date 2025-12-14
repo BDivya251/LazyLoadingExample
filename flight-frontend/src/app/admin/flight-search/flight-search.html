@@ -53,3 +53,48 @@
   </form>
 
 </div>
+<!-- ✈️ Search Results -->
+<div
+  *ngIf="flights.length > 0"
+  class="max-w-5xl mx-auto mt-8 bg-white shadow rounded-lg p-6"
+>
+  <h3 class="text-lg font-semibold mb-4">
+    Available Flights
+  </h3>
+
+  <table class="w-full border-collapse">
+    <thead>
+      <tr class="bg-gray-100 text-left">
+        <th class="p-2 border">Flight No</th>
+        <th class="p-2 border">From</th>
+        <th class="p-2 border">To</th>
+        <th class="p-2 border">Date</th>
+        <th class="p-2 border">Time</th>
+        <th class="p-2 border">Price (₹)</th>
+        <th class="p-2 border">Seats</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr *ngFor="let flight of flights" class="hover:bg-gray-50">
+        <td class="p-2 border">{{ flight.flightNumber }}</td>
+        <td class="p-2 border">{{ flight.departure }}</td>
+        <td class="p-2 border">{{ flight.arrival }}</td>
+        <td class="p-2 border">{{ flight.travelDate }}</td>
+        <td class="p-2 border">
+          {{ flight.departureTime }} - {{ flight.arrivalTime }}
+        </td>
+        <td class="p-2 border">{{ flight.ticketPrice }}</td>
+        <td class="p-2 border">{{ flight.availableSeats }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- ❌ No Results -->
+<p
+  *ngIf="searched && flights.length === 0"
+  class="text-center text-red-600 mt-6"
+>
+  No flights found
+</p>
