@@ -1,0 +1,62 @@
+<p>register works!</p>
+<div class="min-h-screen flex items-center justify-center bg-gray-100">
+  <div class="bg-white p-8 rounded-xl shadow-md w-96">
+    <h2 class="text-2xl font-bold text-center mb-6">Create Account</h2>
+
+    <form (ngSubmit)="register()" #regForm="ngForm">
+
+      <!-- Username -->
+      <input
+        type="text"
+        placeholder="Username"
+        class="w-full mb-3 p-3 border rounded"
+        name="username"
+        [(ngModel)]="username"
+        required
+      />
+
+      <!-- Email (UI ONLY) -->
+      <input
+        type="email"
+        placeholder="Email"
+        class="w-full mb-3 p-3 border rounded"
+        name="email"
+        [(ngModel)]="email"
+      />
+
+      <!-- Password -->
+      <input
+        type="password"
+        placeholder="Password"
+        class="w-full mb-3 p-3 border rounded"
+        name="password"
+        [(ngModel)]="password"
+        required
+      />
+
+      <!-- Confirm Password -->
+      <input
+        type="password"
+        placeholder="Confirm Password"
+        class="w-full mb-3 p-3 border rounded"
+        name="confirmPassword"
+        [(ngModel)]="confirmPassword"
+        required
+      />
+
+      <!-- Admin Checkbox -->
+      <div class="flex items-center mb-4">
+        <input type="checkbox" class="mr-2" [(ngModel)]="isAdmin" name="isAdmin">
+        <span class="text-sm">Register as Admin</span>
+      </div>
+
+      <button
+        class="w-full bg-green-600 text-white py-2 rounded hover:bg-green-700"
+        [disabled]="!regForm.valid"
+      >
+        Register
+      </button>
+
+    </form>
+  </div>
+</div>
