@@ -3,6 +3,10 @@ import { FlightService } from '../flight';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
+import { ChangeDetectorRef } from '@angular/core';
+import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
+
 @Component({
   selector: 'app-add-airline',
   standalone:true,
@@ -18,7 +22,10 @@ export class AddAirlineComponent {
 successMessage = '';
 errorMessage = '';
 
-constructor(private flightService:FlightService){}
+constructor(private flightService:FlightService,
+   private cdr: ChangeDetectorRef,
+    private router:Router
+){}
 addAirline(){
         const payload=
               {
@@ -30,15 +37,29 @@ addAirline(){
       this.successMessage = '';
       return;
     }
-     this.flightService.addAirline(this.airlineName).subscribe({
-      next: () => {
+     this.flightService.addAirline(payload).subscribe({
+      next: (res) => {
         this.successMessage = 'Airline added successfully';
-        this.errorMessage = '';
         this.airlineName = '';
+        this.cdr.detectChanges();
+        // if(res.status===201){
+        Swal.fire({
+          icon:'success',
+          title:"Success!",
+          text:'Airline added succesfully',
+          confirmButtonColor:'#16a34a'
+        });
+      // }
+        // alert('Airline Added');
       },
       error: () => {
         this.errorMessage = 'Failed to add airline';
-        this.successMessage = '';
+      Swal.fire({
+          icon:'error',
+          title:"Error!",
+          text:'Airline was not added',
+          confirmButtonColor:'#d72e0dff'
+        });
       }
     });
   }

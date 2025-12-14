@@ -11,6 +11,8 @@ export class FlightService {
   constructor(private http: HttpClient){}
 
   addAirline(data: any): Observable<any> {
-      return this.http.post(`${FLIGHT_API}/add`, data, { responseType: 'text' });
+      return this.http.post(`${FLIGHT_API}/add`, data, { responseType: 'text' ,  headers: {
+        'Content-Type': 'application/json'
+      }});
     }
 }
