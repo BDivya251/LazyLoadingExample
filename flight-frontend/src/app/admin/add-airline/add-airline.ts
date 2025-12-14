@@ -6,6 +6,23 @@ import { Component } from '@angular/core';
   templateUrl: './add-airline.html',
   styleUrl: './add-airline.css',
 })
+
+
 export class AddAirlineComponent {
+
+  airlineName = '';
+successMessage = '';
+errorMessage = '';
+
+addAirline(){
+        const payload=
+              {
+                  airlineName :this.airlineName
+              };
+}
+
+
+
+
 
 }

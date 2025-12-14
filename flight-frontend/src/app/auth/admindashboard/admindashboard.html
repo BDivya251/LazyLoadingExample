@@ -1,4 +1,8 @@
 <p>admindashboard works!</p>
 <button (click)="logout()">Logout</button>
-<button>Add Airline</button>
-<buttong>Add Flight Inventory</buttong>
+<button routerLink="add-airline">Add Airline</button>
+<button routerLink="add-flightInventory">Add Flight Inventory</button>
+
+
+<hr/>
+<router-outlet></router-outlet>
