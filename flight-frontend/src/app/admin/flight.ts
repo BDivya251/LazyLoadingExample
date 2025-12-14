@@ -7,7 +7,7 @@ const FLIGHT_API='http://localhost:8123/flight-service/flight/airline'
 @Injectable({
   providedIn: 'root',
 })
-export class Flight {
+export class FlightService {
   constructor(private http: HttpClient){}
 
   addAirline(data: any): Observable<any> {
