@@ -3,11 +3,12 @@ import { AuthService } from '../../services/auth';
 import { Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { HttpErrorResponse } from '@angular/common/http';
-
+import Swal from 'sweetalert2';
+import { CommonModule } from '@angular/common';
 @Component({
   selector: 'app-register',
   standalone:true,
-  imports: [FormsModule],
+  imports: [FormsModule,CommonModule],
   templateUrl: './register.html',
   styleUrl: './register.css',
 })
@@ -42,7 +43,13 @@ username = '';
     }
     this.authService.register(payload).subscribe({
       next:()=>{
-        alert('registration succesful');
+        // alert('registration succesful');
+         Swal.fire({
+                        icon: 'success',
+                        title: 'Logged',
+                        text:  `Hello ${this.username} registed successfully,please login`,
+                        confirmButtonColor: '#16a34a'
+                      });
         this.router.navigate(['/login']);
       },
       // error:()=>alert("registration failed")

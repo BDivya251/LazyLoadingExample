@@ -3,6 +3,7 @@ import { AuthService } from '../../services/auth';
 import { Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common'; 
+import Swal from 'sweetalert2';
 @Component({
   selector: 'app-login',
   standalone:true,
@@ -48,11 +49,32 @@ export class LoginComponent {
           // this.router.navigate(['/user']);
         } else {
           this.errorMessage = 'Unknown role';
+          //  this.errorMessage = 'Invalid username or password';
+         Swal.fire({
+                icon: 'error',
+                title: 'error',
+                text: 'invalid username',
+                confirmButtonColor: '#d81818ff'
+              });
+              return;
         }
-        alert("logined succesfully")
+        Swal.fire({
+                icon: 'success',
+                title: 'Logged',
+                text: `Hello ${this.username}`,
+                confirmButtonColor: '#16a34a'
+              });
+        
+        // alert("logined succesfully")
       },
       error: () => {
         this.errorMessage = 'Invalid username or password';
+         Swal.fire({
+                icon: 'error',
+                title: 'error',
+                text: 'invalid username',
+                confirmButtonColor: '#d81818ff'
+              });
       }
     });
   }
