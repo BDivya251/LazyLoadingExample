@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AddFlightInventory } from './add-flight-inventory';
+import { AddFlightInventoryComponent } from './add-flight-inventory';
 
 describe('AddFlightInventory', () => {
-  let component: AddFlightInventory;
-  let fixture: ComponentFixture<AddFlightInventory>;
+  let component: AddFlightInventoryComponent;
+  let fixture: ComponentFixture<AddFlightInventoryComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [AddFlightInventory]
+      imports: [AddFlightInventoryComponent]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(AddFlightInventory);
+    fixture = TestBed.createComponent(AddFlightInventoryComponent);
     component = fixture.componentInstance;
     await fixture.whenStable();
   });
