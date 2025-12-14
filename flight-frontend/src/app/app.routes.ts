@@ -5,6 +5,7 @@ import { Userdashboard } from './auth/userdashboard/userdashboard';
 import { Admindashboard } from './auth/admindashboard/admindashboard';
 import { AddAirlineComponent } from './admin/add-airline/add-airline';
 import { AddFlightInventoryComponent } from './admin/add-flight-inventory/add-flight-inventory';
+import { FlightSearchComponent } from './admin/flight-search/flight-search';
 // import { logoutComponent } from './auth/login/login';
 export const routes: Routes = [
 
@@ -15,7 +16,8 @@ export const routes: Routes = [
       { path: 'admin', component: Admindashboard ,
          children: [
       { path: 'add-airline', component: AddAirlineComponent },
-      { path: 'add-flightInventory', component: AddFlightInventoryComponent }
+      { path: 'add-flightInventory', component: AddFlightInventoryComponent },
+      {path:'search-flight',component:FlightSearchComponent}
     ]
       },
   { path: 'user', component: Userdashboard },
