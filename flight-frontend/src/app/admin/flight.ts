@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-
+import { FlightWrapper } from './flight-wrapper';
 const FLIGHT_API='http://localhost:8123/flight-service/flight/airline'
 // http://localhost:8123/flight-service/flight/airline/inventary/add
 @Injectable({
@@ -25,4 +25,17 @@ export class FlightService {
         }
       })
     }
+
+    searchFlights(departure: string, arrival: string) {
+  return this.http.get<FlightWrapper[]>(
+    `${FLIGHT_API}/search`,
+    {
+      params: {
+        departure: departure,
+        arrival: arrival
+      }
+    }
+  );
+}
+
 }
