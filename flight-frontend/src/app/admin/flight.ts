@@ -15,4 +15,13 @@ export class FlightService {
         'Content-Type': 'application/json'
       }});
     }
+
+    addFlightInventory(data:any):Observable<any>{
+      return this.http.post(`${FLIGHT_API}/inventory/add`,data,
+        {
+        headers:{
+          'Content-Type':'application/json'
+        }
+      })
+    }
 }
