@@ -4,7 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { FlightService } from '../flight';
 import Swal from 'sweetalert2';
-
+import { ChangeDetectorRef } from '@angular/core';
 @Component({
   selector: 'app-add-flight-inventory',
   standalone:true,
@@ -27,45 +27,51 @@ flight = {
     airline: 0
   };
 
-  constructor(private flightService:FlightService){}
+  constructor(private flightService:FlightService, private cdr: ChangeDetectorRef,){}
   
 
-  addFlight(){
-     this.flight = {
-      flightNumber: '',
-      departure: '',
-      arrival: '',
-      travelDate: '',
-      departureTime: '',
-      arrivalTime: '',
-      availableSeats: 0,
-      ticketPrice: 0,
-      airline: 0
-    };
-  
-  this.flightService.addFlightInventory(this.flight).subscribe({
-    next:(res)=>{
-      console.log(res.status)
-      console.log(res.airline)
-      console.log(res.successMessage)
+ addFlight() {
+
+  const payload = { ...this.flight }; //  keep data
+
+  this.flightService.addFlightInventory(payload).subscribe({
+    
+    next: (res) => {
+      console.log(payload)
+      //  this.cdr.detectChanges();
       Swal.fire({
-      icon: 'success',
-      title: 'Flight Added',
-      text: 'Flight details added successfully',
-      confirmButtonColor: '#16a34a'
-    });
+        icon: 'success',
+        title: 'Flight Added',
+        text: 'Flight details added successfully',
+        confirmButtonColor: '#16a34a'
+      });
+
+      // reset AFTER success
+      this.flight = {
+        flightNumber: '',
+        departure: '',
+        arrival: '',
+        travelDate: '',
+        departureTime: '',
+        arrivalTime: '',
+        availableSeats: 0,
+        ticketPrice: 0,
+        airline: 0
+      };
     },
-    error:(err)=>{
-       Swal.fire({
-      icon: 'error',
-      title: 'Error ',
-      text: 'Flight not added successfully',
-      confirmButtonColor:'#f02311ff'
-      
-    });
+
+    error: (err) => {
+      console.log(payload)
+      Swal.fire({
+        icon: 'error',
+        title: 'Error',
+        text: 'Flight not added successfully',
+        confirmButtonColor: '#f02311ff'
+      });
+      console.error(err);
     }
   });
-
 }
+
 
 }
