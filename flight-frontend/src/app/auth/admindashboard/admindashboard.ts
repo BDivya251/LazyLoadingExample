@@ -14,7 +14,9 @@ constructor(
     private router:Router,
   ){}
   logout() {
-  this.authService.logout();
-  this.router.navigate(['/login']);
+    const ok=confirm("are you sure.?? you want to logout");
+  if(ok){
+    this.authService.logout();
+  this.router.navigate(['/login']);}
 }
 }

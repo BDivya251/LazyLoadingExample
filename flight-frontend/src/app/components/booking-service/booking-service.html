@@ -1,0 +1,58 @@
+<p>booking-service works!</p>
+<p>booking-service works!</p>
+
+<form (ngSubmit)="dobooking()">
+
+  <h1>Email</h1>
+  <input
+    type="email"
+    name="email"
+    [(ngModel)]="booking.email"
+    required
+  />
+
+  <h1>Seats booked</h1>
+  <input
+    type="number"
+    name="seatsBooked"
+    [(ngModel)]="booking.seatsBooked"
+    required
+  />
+
+  <h1>Flight id</h1>
+  <input
+    type="number"
+    name="flightId"
+    [(ngModel)]="booking.flightId"
+    required
+  />
+<h1>Name</h1>
+  <input
+  type="text"
+  name="p1Age"
+  [(ngModel)]="booking.passenger[0].name"
+/>
+
+    <h1>Age</h1>
+  <input
+  type="number"
+  name="p1Age"
+  [(ngModel)]="booking.passenger[0].age"
+/>
+<h1>Seat Numbers</h1>
+<input
+  type="number"
+  name="p1SeatNo"
+  [(ngModel)]="booking.passenger[0].seatNumber"
+/>
+
+  <button type="submit">Submit</button>
+
+</form>
+
+<h1 *ngIf="searched && !loading && pnr">
+    {{pnr}}
+</h1>
+<h1 *ngIf="errMsg.length>0">
+    {{errMsg}}
+</h1>

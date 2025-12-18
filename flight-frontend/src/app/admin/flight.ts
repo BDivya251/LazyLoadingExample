@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { FlightWrapper } from './flight-wrapper';
+import { RoundTripFlightResponse } from './RoundTripFlightResponse';
 const FLIGHT_API='http://localhost:8123/flight-service/flight'
 // http://localhost:8123/flight-service/flight/airline/inventary/add
 @Injectable({
@@ -26,7 +27,7 @@ export class FlightService {
       })
     }
 
-    searchFlights( arrival: string,departure: string) {
+    searchFlights( arrival: string,departure: string,date:string) {
   return this.http.get<FlightWrapper[]>(
     `${FLIGHT_API}/search`,
     {
@@ -34,9 +35,24 @@ export class FlightService {
         
         arrival: arrival,
         departure: departure,
+        date:date
       }
     }
   );
 }
+  searchFlightsRoundTrip(arrival:string,departure:string,comingDate:string,goingDate:string){
+    return this.http.get<RoundTripFlightResponse>(
+      `${FLIGHT_API}/search/round-trip`,
+      {
+        params: {
+        
+        arrival: arrival,
+        departure: departure,
+        comingDate:comingDate,
+        goingDate:goingDate
+      }
+      }
+    );
+  }
 
 }
