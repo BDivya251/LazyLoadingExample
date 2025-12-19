@@ -1,23 +1,23 @@
 /* Page container */
-form {
+/* form {
   width: 400px;
   margin: 30px auto;
   padding: 20px;
   border: 1px solid #ddd;
   border-radius: 6px;
   background-color: #fafafa;
-}
+} */
 
 /* Headings */
-h1 {
+/* h1 {
   font-size: 14px;
   margin: 12px 0 4px;
   color: #333;
-}
+} */
 
 /* Inputs */
 input {
-  width: 100%;
+  width: 40%;
   padding: 6px 8px;
   margin-bottom: 10px;
   border: 1px solid #ccc;
@@ -26,24 +26,24 @@ input {
 }
 
 /* Button */
-button {
+/* button {
   width: 100%;
   padding: 8px;
-  background-color: #2563eb; /* blue */
+  background-color: #2563eb; 
   color: white;
   border: none;
   border-radius: 4px;
   cursor: pointer;
   font-size: 14px;
-}
+} */
 
-button:hover {
+/* button:hover {
   background-color: #1d4ed8;
-}
+} */
 
 /* PNR display */
-h1[ng-reflect-ng-if] {
+/* h1[ng-reflect-ng-if] {
   text-align: center;
   color: green;
   margin-top: 20px;
-}
+} */

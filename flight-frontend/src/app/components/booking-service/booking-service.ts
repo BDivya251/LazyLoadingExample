@@ -17,17 +17,29 @@ booking={
   email: "divyabathini08@gmail.com",
   seatsBooked: 2,
   flightId: 6,
-  passenger: [
-    {
-      name: "John",
-      age: 30,
-      seatNumber: 38
-    }
-  ]
+  // passenger: [
+  //   {
+  //     name: "John",
+  //     age: 30,
+  //     seatNumber: 38
+  //   }
+  // ]
+  passenger:[] as any[]
 };
+updatePassengers(){
+  this.booking.passenger=[];
+  for(let i=0;i<this.booking.seatsBooked;i++){
+    this.booking.passenger.push({
+      name:'',
+      age:null,
+      seatNumber:null
+    });
+  }
+}
 pnr='';
 loading=false;
 searched=false;
+count=0
 errMsg='';
 displayMsg='';
 constructor(
@@ -36,7 +48,9 @@ constructor(
    private cdrf:ChangeDetectorRef
 ){}
 
- 
+  // onSeatsChange{
+  //   const count=this.booking.seatsBooked || 0;
+  // }
   
     dobooking():void{
       this.searched=true;

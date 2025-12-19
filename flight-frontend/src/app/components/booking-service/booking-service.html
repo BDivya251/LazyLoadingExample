@@ -16,6 +16,7 @@
     type="number"
     name="seatsBooked"
     [(ngModel)]="booking.seatsBooked"
+    (change) ="updatePassengers()"
     required
   />
 
@@ -26,27 +27,34 @@
     [(ngModel)]="booking.flightId"
     required
   />
-<h1>Name</h1>
+  <div *ngFor="let p of booking.passenger;let i=index">
+    <h1>Passenger{{i+1}}</h1>
+    <h1>Name</h1>
   <input
   type="text"
-  name="p1Age"
-  [(ngModel)]="booking.passenger[0].name"
+  name="name{{i}}"
+  [(ngModel)]="p.name"
+  required
 />
 
     <h1>Age</h1>
   <input
   type="number"
-  name="p1Age"
-  [(ngModel)]="booking.passenger[0].age"
+  name="age{{i}}"
+  [(ngModel)]="p.age"
+  required
 />
 <h1>Seat Numbers</h1>
 <input
   type="number"
-  name="p1SeatNo"
-  [(ngModel)]="booking.passenger[0].seatNumber"
+  name="seat{{i}}"
+  [(ngModel)]="p.seatNumber"
+  required
 />
-
+</div>
+<br>
   <button type="submit">Submit</button>
+  <br>
 
 </form>
 

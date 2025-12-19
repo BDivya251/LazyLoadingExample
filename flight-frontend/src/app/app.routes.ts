@@ -33,7 +33,8 @@ export const routes: Routes = [
     children:[
       {path:'search-by-pnr',component:SearchByPNR},
        {path:'booking',component:BookingService},
-       {path:'search-by-email',component:SearchByEmail}
+       {path:'search-by-email',component:SearchByEmail},
+       {path:'search-flight',component:FlightSearchComponent},
     ]
   },
    {path:'**',redirectTo:'home'},
